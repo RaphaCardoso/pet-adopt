@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pet_adopt_project/view/pages/navigation.dart';
 
 class DetailsPet extends StatefulWidget {
-  const DetailsPet({super.key});
+  const DetailsPet({
+    super.key
+    });
 
   @override
   State<DetailsPet> createState() => _DetailsPetState();

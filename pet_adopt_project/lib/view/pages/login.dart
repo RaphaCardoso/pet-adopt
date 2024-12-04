@@ -24,8 +24,6 @@ class _LoginState extends State<Login> {
         final LoginModel userData = LoginModel(
             email: emailController.text, password: passwordController.text);
 
-        print(userData);
-
         var responseData = await login(userData);
 
         print("Usuário logado com sucesso: ${responseData['userId']}");

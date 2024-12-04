@@ -61,7 +61,7 @@ class _introPageState extends State<IntroPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 120,
+                  height: 160,
                   width: 300,
                   child: Column(
                     children: [
