@@ -4,15 +4,16 @@ import 'package:pet_adopt_project/view/pages/detailsPet.dart';
 class Pets extends StatelessWidget {
   final String name;
   final List<dynamic> images;
-
-  const Pets({super.key, required this.name, required this.images});
+  final String id;
+  const Pets(
+      {super.key, required this.name, required this.images, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const DetailsPet()),
+          MaterialPageRoute(builder: (context) => DetailsPet(id: id)),
         );
       },
       child: Container(

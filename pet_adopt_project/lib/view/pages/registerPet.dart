@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_adopt_project/controller/petsUser_controller.dart';
+import 'package:pet_adopt_project/services/petsUser_controller.dart';
 import 'package:pet_adopt_project/view/widgets/pets.dart';
 
 class RegisterPet extends StatefulWidget {
@@ -15,10 +15,6 @@ class _RegisterPetState extends State<RegisterPet> {
   void getPetsUser() async {
     try {
       var responseData = await petsUser();
-
-      print("////////////////");
-      print(responseData);
-
       for (var element in responseData['pets']) {
         setState(() {
           pets.add(element);
@@ -118,6 +114,7 @@ class _RegisterPetState extends State<RegisterPet> {
                     child: Pets(
                       name: pets[index]['name'],
                       images: images,
+                      id: pets[index]['_id'],
                     ),
                   );
                 },

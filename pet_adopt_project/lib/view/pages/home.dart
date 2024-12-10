@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_adopt_project/controller/home_controller.dart';
+import 'package:pet_adopt_project/services/home_controller.dart';
 import 'package:pet_adopt_project/view/widgets/petCategory.dart';
 import 'package:pet_adopt_project/view/widgets/pets.dart';
 
@@ -233,9 +233,9 @@ class _HomeState extends State<Home> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Pets(
-                      name: pets[index]['name'],
-                      images: images,
-                    ),
+                        name: pets[index]['name'],
+                        images: images,
+                        id: pets[index]['_id']),
                   );
                 },
               ),

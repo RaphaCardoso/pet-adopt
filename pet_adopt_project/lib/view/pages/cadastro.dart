@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_adopt_project/controller/authenticate_user.dart';
+import 'package:pet_adopt_project/services/authenticate_user.dart';
 import 'package:pet_adopt_project/models/user_model.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:pet_adopt_project/view/pages/login.dart';

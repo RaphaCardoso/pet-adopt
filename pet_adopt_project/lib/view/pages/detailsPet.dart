@@ -1,16 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:pet_adopt_project/services/petDetails.dart';
 import 'package:pet_adopt_project/view/pages/navigation.dart';
 
 class DetailsPet extends StatefulWidget {
-  const DetailsPet({
-    super.key
-    });
+  final String id;
+
+  const DetailsPet({super.key, required this.id});
 
   @override
   State<DetailsPet> createState() => _DetailsPetState();
 }
 
 class _DetailsPetState extends State<DetailsPet> {
+  String nome = '';
+  int age = 0;
+  int weight = 0;
+  String colors = '';
+  List<String> images = [];
+
+  void getPetsDetails() async {
+    try {
+      var responseData = await petsDetails(widget.id);
+
+      print(responseData);
+
+      setState(() {
+        nome = responseData['pet']['name'];
+        age = responseData['pet']['age'];
+        weight = responseData['pet']['weight'];
+        colors = responseData['pet']['color'];
+        images.add(responseData['pet']['images'][0]);
+      });
+
+      print("Detalhe pet efetuado com sucesso!");
+    } catch (e) {
+      print("Erro ao detalhar pet: $e");
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getPetsDetails();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +53,13 @@ class _DetailsPetState extends State<DetailsPet> {
           SliverAppBar(
             expandedHeight: 450,
             floating: false,
-            pinned: true,
+            // pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.asset(
-                    'assets/images/gatinho.jpg',
+                  Image.network(
+                    images[0],
                     fit: BoxFit.cover,
                   ),
                   Container(
@@ -86,9 +120,9 @@ class _DetailsPetState extends State<DetailsPet> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    'Samantha',
-                                    style: TextStyle(
+                                  Text(
+                                    nome,
+                                    style: const TextStyle(
                                         fontSize: 28, color: Colors.pink),
                                   ),
                                   Container(
@@ -202,9 +236,9 @@ class _DetailsPetState extends State<DetailsPet> {
                                 padding: const EdgeInsets.only(top: 25),
                                 decoration: BoxDecoration(
                                     color: Colors.deepPurple[100]),
-                                child: const Column(
+                                child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Color',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -212,8 +246,8 @@ class _DetailsPetState extends State<DetailsPet> {
                                           color: Colors.white),
                                     ),
                                     Text(
-                                      'Orange',
-                                      style: TextStyle(
+                                      colors,
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 16,
                                       ),
@@ -227,9 +261,9 @@ class _DetailsPetState extends State<DetailsPet> {
                                 padding: const EdgeInsets.only(top: 25),
                                 decoration: BoxDecoration(
                                     color: Colors.deepPurple[100]),
-                                child: const Column(
+                                child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Weight',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -237,8 +271,8 @@ class _DetailsPetState extends State<DetailsPet> {
                                           color: Colors.white),
                                     ),
                                     Text(
-                                      '8 kg',
-                                      style: TextStyle(
+                                      weight.toString(),
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 16,
                                       ),
@@ -252,9 +286,9 @@ class _DetailsPetState extends State<DetailsPet> {
                                 padding: const EdgeInsets.only(top: 25),
                                 decoration: BoxDecoration(
                                     color: Colors.deepPurple[100]),
-                                child: const Column(
+                                child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Age',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -262,8 +296,8 @@ class _DetailsPetState extends State<DetailsPet> {
                                           color: Colors.white),
                                     ),
                                     Text(
-                                      '     20\n months',
-                                      style: TextStyle(
+                                      age.toString(),
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 16,
                                       ),

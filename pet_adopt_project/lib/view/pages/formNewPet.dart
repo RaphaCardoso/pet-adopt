@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_adopt_project/controller/newPet_controller.dart';
+import 'package:pet_adopt_project/services/newPet_controller.dart';
 import 'package:pet_adopt_project/models/pet_model.dart';
 import 'package:pet_adopt_project/view/pages/navigation.dart';
 
