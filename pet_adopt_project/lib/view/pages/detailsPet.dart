@@ -29,7 +29,9 @@ class _DetailsPetState extends State<DetailsPet> {
         age = responseData['pet']['age'];
         weight = responseData['pet']['weight'];
         colors = responseData['pet']['color'];
-        images.add(responseData['pet']['images'][0]);
+        if (responseData['pet']['images'].isNotEmpty) {
+          images.add(responseData['pet']['images'][0]);
+        }
       });
 
       print("Detalhe pet efetuado com sucesso!");
@@ -53,15 +55,20 @@ class _DetailsPetState extends State<DetailsPet> {
           SliverAppBar(
             expandedHeight: 450,
             floating: false,
-            // pinned: true,
+            automaticallyImplyLeading: false,
+            pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.network(
-                    images[0],
-                    fit: BoxFit.cover,
-                  ),
+                  images.isNotEmpty
+                      ? Image.network(
+                          images[0],
+                          fit: BoxFit.cover,
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                   Container(
                     alignment: Alignment.topLeft,
                     padding: const EdgeInsets.only(left: 20, top: 50),

@@ -15,6 +15,7 @@ class _introPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Container(
           margin: const EdgeInsets.only(top: 10),
           alignment: Alignment.center,
@@ -61,7 +62,7 @@ class _introPageState extends State<IntroPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 160,
+                  height: 120,
                   width: 300,
                   child: Column(
                     children: [

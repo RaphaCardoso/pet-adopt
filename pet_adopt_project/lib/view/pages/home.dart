@@ -231,7 +231,7 @@ class _HomeState extends State<Home> {
                   List<dynamic> images = pets[index]['images'];
 
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Pets(
                         name: pets[index]['name'],
                         images: images,
