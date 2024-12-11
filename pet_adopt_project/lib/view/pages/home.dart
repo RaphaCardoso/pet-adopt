@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
 
   void getAllPets() async {
     try {
-      var responseData = await getPets();
+      var responseData = await getPets(1);
 
       print("Lista de pets efetuada com sucesso!");
 
@@ -24,6 +24,8 @@ class _HomeState extends State<Home> {
           pets.add(element);
         });
       }
+
+      print(pets.length);
     } catch (e) {
       print("Erro ao listar pets: $e");
     }
@@ -212,7 +214,7 @@ class _HomeState extends State<Home> {
                   TextButton(
                     onPressed: () {},
                     child: const Text(
-                      'See All',
+                      'See More',
                       style: TextStyle(
                         color: Color.fromARGB(255, 100, 62, 204),
                         fontSize: 16,

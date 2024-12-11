@@ -3,9 +3,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-Future<Map<String, dynamic>> getPets() async {
+Future<Map<String, dynamic>> getPets(page) async {
+  print(page);
   final response = await http.get(Uri.parse(
-      'https://pet-adopt-dq32j.ondigitalocean.app/pet/pets?page=${5}&limit=6'));
+      'https://pet-adopt-dq32j.ondigitalocean.app/pet/pets?page=$page&limit=8'));
 
   if (response.statusCode == 200) {
     return jsonDecode(response.body);
